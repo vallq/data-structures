@@ -15,25 +15,25 @@ class LinkedList {
 
     if (this.head === null) {
       this.head = newNode;
-      this.length++;
     } else {
       newNode.next = this.getFirst();
       this.head = newNode;
-      this.length++;
     }
+
+    this.length++;
   }
 
   shift() {
-    if (this.head === null) {
-      return null;
-    } else {
-      const nodeToRemove = this.head;
+    const nodeToRemove = this.head;
+
+    if (nodeToRemove) {
       this.head = nodeToRemove.next;
       this.length--;
-      return nodeToRemove;
     }
+
+    return nodeToRemove;
   }
-  
+
   getLast() {
     let countNode = 0;
     let currentNode = this.head;
