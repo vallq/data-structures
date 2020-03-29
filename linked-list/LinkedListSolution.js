@@ -125,19 +125,15 @@ class LinkedList {
     } else if (!(nodeToInsert instanceof Node)) {
       throw new Error("not a node");
     } else {
-      while (countNode <= targetIndex) {
-        let nextNode = currentNode.next;
-        if (countNode === targetIndex - 1) {
-          currentNode.next = nodeToInsert;
-          nodeToInsert.next = nextNode;
-          this.length++;
-          return;
-        } else {
-          currentNode = nextNode;
-          nextNode = nextNode.next;
-          countNode++;
-        }
+      let nextNode = currentNode.next;
+      while (countNode < targetIndex - 1) {
+        currentNode = nextNode;
+        nextNode = nextNode.next;
+        countNode++;
       }
+      currentNode.next = nodeToInsert;
+      nodeToInsert.next = nextNode;
+      this.length++;
     }
   }
 
