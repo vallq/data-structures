@@ -145,8 +145,8 @@ class LinkedList {
     } else if (targetIndex < 0 || targetIndex > this.length - 1) {
       throw new Error("index out of bound");
     } else {
+      let nextNode = currentNode.next;
       while (countNode <= targetIndex) {
-        let nextNode = currentNode.next;
         if (nextNode === this.getAt(targetIndex)) {
           currentNode.next = nextNode.next;
           this.length--;
