@@ -95,24 +95,23 @@ class LinkedList {
 
     if (isNaN(targetIndex)) {
       throw new Error("not a number");
-    } else {
-      if (targetIndex === 0) {
-        return currentNode;
-      } else if (targetIndex > this.length - 1 || targetIndex < 0) {
-        throw new Error("index out of bound");
-      } else {
-        let nextNode = currentNode.next;
-        while (countNode <= targetIndex) {
-          if (countNode === targetIndex) {
-            return currentNode;
-          } else {
-            currentNode = nextNode;
-            nextNode = nextNode.next;
-            countNode++;
-          }
-        }
-      }
     }
+
+    if (targetIndex === 0) {
+      return currentNode;
+    }
+
+    if (targetIndex > this.length - 1 || targetIndex < 0) {
+      throw new Error("index out of bound");
+    }
+
+    let nextNode = currentNode.next;
+    while (countNode < targetIndex) {
+      currentNode = nextNode;
+      nextNode = nextNode.next;
+      countNode++;
+    }
+    return currentNode;
   }
 
   insertAt(targetIndex, nodeToInsert) {
